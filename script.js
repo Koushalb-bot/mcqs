@@ -308,7 +308,7 @@ function sendEmail() {
     };
 
     // Send the email through EmailJS
-    emailjs.send('your_service_id', 'your_template_id', data)
+    emailjs.send('koushalb19@gmail.com', 'your_template_id', data)
         .then(function(response) {
             console.log('Email sent successfully:', response);
         }, function(error) {
