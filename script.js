@@ -347,10 +347,18 @@ function submitAnswers() {
         console.error('Error:', error);  // Log error if something goes wrong
     });
 }
-document.querySelector('#submit-button').addEventListener('click', function() {
-    submitAnswers();  // Submit answers when the user clicks the submit button
-});
+
 
     animateThankYouMessage();
 }
+
+document.querySelector('#submit-button').addEventListener('click', function() {
+    submitAnswers();  // Submit answers when the user clicks the submit button
+});fetch('https://formspree.io/f/mrbeljqw', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),  // send the answers
+})
 
