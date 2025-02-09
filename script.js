@@ -323,6 +323,30 @@ function showThankYouPage() {
 
     // Send email with quiz responses
     sendEmail();
+function submitAnswers() {
+    // Convert answers array to a string (or format as needed)
+    const data = {
+        answers: answers.join(", ")  // Combine answers into a single string
+    };
+
+    // Send the collected answers to Formspree using a POST request
+    fetch('https://formspree.io/f/mrbeljqw', {  // Use your generated Formspree endpoint URL
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Specify content type
+        },
+        body: JSON.stringify(data),  // Send answers as JSON
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        // Optionally show a thank you message or redirect
+        window.location.href = "/thank-you.html";  // Redirect to a thank you page (optional)
+    })
+    .catch((error) => {
+        console.error('Error:', error);  // Log error if something goes wrong
+    });
+}
 
     animateThankYouMessage();
 }
