@@ -296,3 +296,34 @@ document.getElementById("restart-button").addEventListener("click", () => {
     document.getElementById("thank-you-page").classList.add("hidden");
     document.getElementById("welcome-page").classList.remove("hidden");
 });
+// Initialize EmailJS
+emailjs.init('your_user_id'); // Replace 'your_user_id' with your EmailJS user ID
+
+function sendEmail() {
+    const data = {
+        answers: answers.join(', '), // Join answers as a string
+        subject: 'Quiz Responses',  // The subject of the email
+        from_name: 'Your Quiz',     // Your name or quiz name
+        to_email: 'your_email@example.com' // Your email where responses will be sent
+    };
+
+    // Send the email through EmailJS
+    emailjs.send('your_service_id', 'your_template_id', data)
+        .then(function(response) {
+            console.log('Email sent successfully:', response);
+        }, function(error) {
+            console.log('Failed to send email:', error);
+        });
+}
+
+// Call this function when the quiz ends
+function showThankYouPage() {
+    document.getElementById("question-section").classList.add("hidden");
+    document.getElementById("thank-you-page").classList.remove("hidden");
+
+    // Send email with quiz responses
+    sendEmail();
+
+    animateThankYouMessage();
+}
+
