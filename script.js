@@ -304,7 +304,7 @@ function sendEmail() {
         answers: answers.join(', '), // Join answers as a string
         subject: 'Quiz Responses',  // The subject of the email
         from_name: 'Your Quiz',     // Your name or quiz name
-        to_email: 'your_email@example.com' // Your email where responses will be sent
+        to_email: 'koushalb19@gmail.com' // Your email where responses will be sent
     };
 
     // Send the email through EmailJS
